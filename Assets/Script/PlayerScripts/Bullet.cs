@@ -42,10 +42,12 @@ public class Bullet : MonoBehaviour
         Dragon dr = enemy.GetComponent<Dragon>();
         Turret tr = enemy.GetComponent<Turret>();
         BuildingBoss bb = enemy.GetComponent<BuildingBoss>();
+        Explosion ep = enemy.GetComponent<Explosion>();
 
         if (e != null)
         {
             e.TakeDamage(damage);
+            
         }
         if (sp != null)
         {
@@ -62,6 +64,10 @@ public class Bullet : MonoBehaviour
         if (bb != null)
         {
             bb.TakeDamage(damage);
+        }
+        if (ep != null)
+        {
+            ep.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

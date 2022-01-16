@@ -44,6 +44,9 @@ public class ShotgunBullet : MonoBehaviour
         Dragon dr = enemy.GetComponent<Dragon>();
         Turret tr = enemy.GetComponent<Turret>();
         BuildingBoss bb = enemy.GetComponent<BuildingBoss>();
+        Explosion ep = enemy.GetComponent<Explosion>();
+
+        
 
         if (e != null)
         {
@@ -64,6 +67,10 @@ public class ShotgunBullet : MonoBehaviour
         if (bb != null)
         {
             bb.TakeDamage(damage);
+        }
+        if (ep != null)
+        {
+            ep.TakeDamage(damage);
         }
         if (enemy.gameObject.tag == "ShotgunShell")
         {

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackSpeed = 1f;
     private float canAttack;
+
     public Animator animator;
     public float health = 50f;
     private bool isAlive;
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
     {
         if (isAlive)
         {
+            
             Vector3 direction = player.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = angle;
@@ -57,6 +59,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        Debug.Log("Took Damage: " + amount);
         health -= amount;
         if (health <= 0)
         {
@@ -98,9 +101,6 @@ public class Enemy : MonoBehaviour
             playerGameObject.GetComponent<PlayerInfo>().UpdateScore(points);
             gavePoints = true;
         }
-        
-        
-       
     }
 
     private void DestroyObject()

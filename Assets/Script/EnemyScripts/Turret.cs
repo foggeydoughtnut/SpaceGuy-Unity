@@ -116,7 +116,6 @@ public class Turret : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("Turret Took Damage");
         health -= amount;
         if (health <= 0)
         {
