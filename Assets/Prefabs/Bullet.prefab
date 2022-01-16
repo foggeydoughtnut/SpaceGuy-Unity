@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &2918306510629235359
 BoxCollider2D:
@@ -147,4 +147,3 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   damage: 25
   timeToDespawn: 3
-  cam: {fileID: 1907610840497991849, guid: ba015dca920d0da42b9e3ba5e61e4ce6, type: 3}

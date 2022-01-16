@@ -27,19 +27,20 @@ public class Shooting : MonoBehaviour
     [Header("Shotgun")]
     public float maxSpread;
     public int pelletCount;
-/*    List<Quaternion> pellets;*/
     
-
+    
+    [Header("Missile")]
+    public float missileShotCooldown;
+    public float missileForce = 20f;
+    public GameObject missilePrefab;
+    public Transform fireMissilePoint1;
+    public Transform fireMissilePoint2;
+    private bool canShootMissile = true;
 
 
     private void Awake()
     {
         controls = new PlayerControls();
-/*        pellets = new List<Quaternion>(pelletCount);
-        for (int i = 0; i < pelletCount; i++)
-        {
-            pellets.Add(Quaternion.Euler(Vector3.zero));
-        }*/
     }
 
     private void OnEnable()
@@ -57,6 +58,7 @@ public class Shooting : MonoBehaviour
     {
         controls.Gameplay.Shoot.performed += ctx => setTriggerShooting(true);
         controls.Gameplay.Shoot.canceled += ctx => setTriggerShooting(false);
+        controls.Gameplay.MissileLaunch.performed += ctx => MissileLaunch();
         cooldownTimer = Time.time;
 
         if (canShootFast)
@@ -72,13 +74,28 @@ public class Shooting : MonoBehaviour
         
     }
 
+    private void MissileLaunch()
+    {
+        Debug.Log("Launched Missile"); 
+        if (PauseManager.paused || !canShootMissile) return;
+
+        GameObject missile1 = Instantiate(missilePrefab, fireMissilePoint1.position, fireMissilePoint1.rotation);
+        GameObject missile2 = Instantiate(missilePrefab, fireMissilePoint2.position, fireMissilePoint2.rotation);
+        Rigidbody2D rb1 = missile1.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb2 = missile2.GetComponent<Rigidbody2D>();
+        rb1.AddForce(fireMissilePoint1.up * missileForce, ForceMode2D.Impulse);
+        rb2.AddForce(fireMissilePoint2.up * missileForce, ForceMode2D.Impulse);
+        
+        FindObjectOfType<AudioManager>().Play("PlayerShoot");
+        StartCoroutine(CanShootMissile());
+    }
+
     private void setTriggerShooting(bool status)
     {
         isHoldingTrigger = status;
     }
     private void Update()
     {
-/*        Debug.Log(isHoldingTrigger);*/
         if (isHoldingTrigger) Shoot();
     }
 
@@ -87,6 +104,13 @@ public class Shooting : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(shotCooldown);
         canShoot = true;
+    }
+
+    IEnumerator CanShootMissile()
+    {
+        canShootMissile = false;
+        yield return new WaitForSeconds(missileShotCooldown);
+        canShootMissile = true;
     }
 
     void Shoot()
@@ -104,37 +128,15 @@ public class Shooting : MonoBehaviour
             {
                 Debug.Log("Shooting Shotgun");
 
-                /*                int i = 0;
-                                foreach (Quaternion quat in pellets)
-                                {
-                                    pellets[i] = Random.rotation;
-                                    GameObject p = Instantiate(shotgunBullet, firePoint.position, firePoint.rotation);
-                                    p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, pellets[i], maxSpread);
-                                    p.GetComponent<Rigidbody2D>().AddForce(p.transform.right * bulletForce);
-
-                                    i++;
-                                }*/
-
                 for (int i = 0; i <= pelletCount; i ++)
                 {
-                    /*GameObject spawnedBullet = Instantiate(shotgunBullet, firePoint.position, firePoint.rotation);
-                    Rigidbody2D rb = spawnedBullet.GetComponent<Rigidbody2D>();
-                    rb.AddForce(firePoint.up * bulletForce + new Vector3(0f, 0f, Random.Range(-maxSpread, maxSpread), ForceMode2D.Impulse));*/
+
                     GameObject spawnedBullet = Instantiate(shotgunBullet, firePoint.position, firePoint.rotation);
                     Rigidbody2D rb = spawnedBullet.GetComponent<Rigidbody2D>();
                     spawnedBullet.transform.Rotate(new Vector3(0, 0, -(maxSpread / 2) + (maxSpread / pelletCount) * i));
                     rb.AddForce(spawnedBullet.transform.up * bulletForce, ForceMode2D.Impulse);
 
                 }
-
-
-/*                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, Random.Range(-maxSpread, maxSpread)));
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);*/
-
-
-
-
 
                 FindObjectOfType<AudioManager>().Play("PlayerShoot");
             }

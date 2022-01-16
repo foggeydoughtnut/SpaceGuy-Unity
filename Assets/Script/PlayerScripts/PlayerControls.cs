@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
+/*// GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -321,7 +321,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         return GetEnumerator();
     }
 
-    public void Enable()
+*//*    public void Enable()
     {
         asset.Enable();
     }
@@ -329,7 +329,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public void Disable()
     {
         asset.Disable();
-    }
+    }*//*
 
     // Gameplay
     private readonly InputActionMap m_Gameplay;
@@ -404,3 +404,4 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLookDirection(InputAction.CallbackContext context);
     }
 }
+*/

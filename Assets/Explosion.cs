@@ -53,9 +53,6 @@ public class Explosion : MonoBehaviour
         Explode();
         animator.SetBool("isDead", true);
         FindObjectOfType<AudioManager>().Play("RegEnemyDeath");
-
-        
-
     }
 
     void Explode()

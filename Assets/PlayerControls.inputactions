@@ -28,6 +28,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MissileLaunch",
+                    "type": "Button",
+                    "id": "0897e69b-51b6-41cf-b6cd-9ccf42d35497",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -248,6 +256,28 @@
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",
                     "action": "LookDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db796b76-1fd3-4af3-a40a-f086fc15a3ec",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MNK",
+                    "action": "MissileLaunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adedb5a4-b1a7-4164-a03f-cb854bd7bbad",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MissileLaunch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

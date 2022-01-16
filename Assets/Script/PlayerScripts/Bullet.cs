@@ -8,11 +8,18 @@ public class Bullet : MonoBehaviour
     public float damage;
     public float timeToDespawn;
 
+    private Transform player;
+    private Transform playerSecondCollider;
+
 
     private void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
+        playerSecondCollider = GameObject.FindWithTag("PlayerCollider").transform;
+
         StartCoroutine(SelfDestruct());
-        
+        Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(playerSecondCollider.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void OnTriggerExit2D(Collider2D collision)

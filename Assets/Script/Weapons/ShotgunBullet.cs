@@ -9,13 +9,16 @@ public class ShotgunBullet : MonoBehaviour
     public float timeToDespawn;
 
     public GameObject bullet;
+    public GameObject missile;
 
     private void Start()
     {
            
         StartCoroutine(SelfDestruct());
         bullet = GameObject.FindGameObjectWithTag("ShotgunShell");
+        missile = GameObject.FindGameObjectWithTag("Missile");
         Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(missile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void OnTriggerExit2D(Collider2D collision)

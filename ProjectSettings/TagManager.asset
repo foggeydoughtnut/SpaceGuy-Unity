@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Walls
   - ShotgunShell
+  - PlayerCollider
+  - Missile
   layers:
   - Default
   - TransparentFX

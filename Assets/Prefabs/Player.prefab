@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1258120926}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,69 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.049999952, y: 0.12797952}
+  m_Offset: {x: -0.05, y: 0.1279795}
   serializedVersion: 2
-  m_Radius: 1.2279794
+  m_Radius: 1.24
+--- !u!1 &119751648897939117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2934569092502658387}
+  m_Layer: 0
+  m_Name: MissilePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2934569092502658387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119751648897939117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.85, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5366737583336174064}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3925486458859970211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4363203758142603193}
+  m_Layer: 0
+  m_Name: MissilePoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4363203758142603193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925486458859970211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.95, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5366737583336174064}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5366737581852513813
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +175,8 @@ Transform:
   m_Children:
   - {fileID: 5366737581852513818}
   - {fileID: 1258120925}
+  - {fileID: 4363203758142603193}
+  - {fileID: 2934569092502658387}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -188,7 +250,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &5366737582820569756
 MonoBehaviour:
@@ -255,6 +317,11 @@ MonoBehaviour:
   canShoot: 1
   maxSpread: 35
   pelletCount: 10
+  missileShotCooldown: 1
+  missileForce: 15
+  missilePrefab: {fileID: 9202210138812022279, guid: 5dd3046c2159a3f4fa9e63ba36ead6fd, type: 3}
+  fireMissilePoint1: {fileID: 4363203758142603193}
+  fireMissilePoint2: {fileID: 2934569092502658387}
 --- !u!114 &553352267
 MonoBehaviour:
   m_ObjectHideFlags: 0
