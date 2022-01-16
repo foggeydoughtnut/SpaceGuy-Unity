@@ -10,8 +10,6 @@ public class LifeCount : MonoBehaviour
     public int startingLives;
     private int lifeCounter { get; set; }
 
-    private int pointsSinceLastLife;
-
     private void Start()
     {
         lifeCounter = startingLives;

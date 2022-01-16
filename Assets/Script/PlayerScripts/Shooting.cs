@@ -37,6 +37,8 @@ public class Shooting : MonoBehaviour
     public Transform fireMissilePoint2;
     private bool canShootMissile = true;
 
+    private MissileCount missileCount;
+
 
     private void Awake()
     {
@@ -56,6 +58,9 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
+        missileCount = FindObjectOfType<MissileCount>();
+        
+
         controls.Gameplay.Shoot.performed += ctx => setTriggerShooting(true);
         controls.Gameplay.Shoot.canceled += ctx => setTriggerShooting(false);
         controls.Gameplay.MissileLaunch.performed += ctx => MissileLaunch();
@@ -77,7 +82,7 @@ public class Shooting : MonoBehaviour
     private void MissileLaunch()
     {
         Debug.Log("Launched Missile"); 
-        if (PauseManager.paused || !canShootMissile) return;
+        if (PauseManager.paused || !canShootMissile || missileCount.getCurrentMissiles() <= 0) return;
 
         GameObject missile1 = Instantiate(missilePrefab, fireMissilePoint1.position, fireMissilePoint1.rotation);
         GameObject missile2 = Instantiate(missilePrefab, fireMissilePoint2.position, fireMissilePoint2.rotation);
@@ -87,6 +92,7 @@ public class Shooting : MonoBehaviour
         rb2.AddForce(fireMissilePoint2.up * missileForce, ForceMode2D.Impulse);
         
         FindObjectOfType<AudioManager>().Play("PlayerShoot");
+        missileCount.TakeMissile();
         StartCoroutine(CanShootMissile());
     }
 

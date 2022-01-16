@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   rotationSpeed: 100
-  distanceToTrack: 15
+  distanceToTrack: 20
   attackDamage: 10
   attackSpeed: 1
   animator: {fileID: 964996901}
