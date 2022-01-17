@@ -62,8 +62,15 @@ public class Explosion : MonoBehaviour
         Debug.Log(colliders.Length);
         foreach (Collider2D collider in colliders)
         {
-            
-            if (collider.tag == "Enemy")
+            Vector2 direction =  collider.transform.position - transform.position;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, direction.magnitude, LayerMask.GetMask("Walls"));
+
+            if (hit) Debug.Log(hit.transform.gameObject.tag);
+
+            Debug.DrawRay(transform.position, direction, Color.red, 10f);
+
+            if (!hit && collider.tag == "Enemy")
             {
                 Damage(collider.transform);
             }

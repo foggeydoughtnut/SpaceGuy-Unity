@@ -54,27 +54,33 @@ public class Missile : MonoBehaviour
         if (collision.gameObject.tag != "Player")
         {
             Explode();
+
         }
         
-        
+
     }
 
     void Explode()
     {
-        Debug.Log("BOOOOOOM");
+        
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-        Debug.Log(colliders.Length);
+        
         foreach (Collider2D collider in colliders)
         {
 
-            if (collider.tag == "Enemy")
+            Vector2 direction = collider.transform.position - transform.position;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, direction.magnitude, LayerMask.GetMask("Walls"));
+
+            if (!hit && collider.CompareTag("Enemy"))
             {
                 Damage(collider.transform);
             }
-
         }
-        /*startExplosion();*/
         animator.SetBool("hitObject", true);
+        Debug.Log("I hit something");
+        /*startExplosion();*/
+
         FindObjectOfType<AudioManager>().Play("RegEnemyDeath");
     }
 
@@ -119,7 +125,6 @@ public class Missile : MonoBehaviour
         {
             ep.TakeDamage(damage);
         }
-        Destroy(gameObject);
 
     }
 

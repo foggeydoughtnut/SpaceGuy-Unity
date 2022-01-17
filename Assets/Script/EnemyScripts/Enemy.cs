@@ -58,8 +58,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(float amount)
-    {
-        Debug.Log("Took Damage: " + amount);
+    { 
         health -= amount;
         if (health <= 0)
         {
@@ -94,6 +93,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         animator.SetBool("IsDead", true);
+        rb.bodyType = RigidbodyType2D.Static;
         FindObjectOfType<AudioManager>().Play("RegEnemyDeath");
         isAlive = false;
         if (!gavePoints)
