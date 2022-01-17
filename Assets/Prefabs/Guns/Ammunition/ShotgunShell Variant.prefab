@@ -33,6 +33,7 @@ MonoBehaviour:
   timeToDespawn: 0.5
   bullet: {fileID: 3779024224671778206}
   missile: {fileID: 9202210138812022279, guid: 5dd3046c2159a3f4fa9e63ba36ead6fd, type: 3}
+  player: {fileID: 0}
 --- !u!1001 &2138826076462667515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,11 +75,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815450218785494162, guid: 400687551d123774b83eb8bb1dd51d1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.4968452
       objectReference: {fileID: 0}
     - target: {fileID: 7815450218785494162, guid: 400687551d123774b83eb8bb1dd51d1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -17.648035
       objectReference: {fileID: 0}
     - target: {fileID: 7815450218785494162, guid: 400687551d123774b83eb8bb1dd51d1f, type: 3}
       propertyPath: m_LocalPosition.z

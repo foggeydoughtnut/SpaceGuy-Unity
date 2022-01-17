@@ -11,14 +11,24 @@ public class ShotgunBullet : MonoBehaviour
     public GameObject bullet;
     public GameObject missile;
 
+    private Transform player;
+    private Transform playerSecondCollider;
+
     private void Start()
     {
-           
+
+        player = GameObject.FindWithTag("Player").transform;
+        playerSecondCollider = GameObject.FindWithTag("PlayerCollider").transform;
+
         StartCoroutine(SelfDestruct());
         bullet = GameObject.FindGameObjectWithTag("ShotgunShell");
         missile = GameObject.FindGameObjectWithTag("Missile");
+
         Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(missile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(playerSecondCollider.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void OnTriggerExit2D(Collider2D collision)

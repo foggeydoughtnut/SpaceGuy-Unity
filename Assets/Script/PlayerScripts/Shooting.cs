@@ -81,7 +81,6 @@ public class Shooting : MonoBehaviour
 
     private void MissileLaunch()
     {
-        Debug.Log("Launched Missile"); 
         if (PauseManager.paused || !canShootMissile || missileCount.getCurrentMissiles() <= 0) return;
 
         GameObject missile1 = Instantiate(missilePrefab, fireMissilePoint1.position, fireMissilePoint1.rotation);

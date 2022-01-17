@@ -13,11 +13,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Walls
   - Water
   - UI
   - ShotgunBullet
-  - 
+  - Minimap
   - 
   - 
   - 
