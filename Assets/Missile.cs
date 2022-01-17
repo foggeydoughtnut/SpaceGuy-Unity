@@ -73,11 +73,16 @@ public class Missile : MonoBehaviour
             }
 
         }
-
+        /*startExplosion();*/
         animator.SetBool("hitObject", true);
         FindObjectOfType<AudioManager>().Play("RegEnemyDeath");
     }
 
+    private void startExplosion()
+    {
+        gameObject.transform.localScale.x.Equals(5);
+        gameObject.transform.localScale.y.Equals(5);
+    }
 
 
     void Damage(Transform enemy)
