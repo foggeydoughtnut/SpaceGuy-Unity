@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 941408051}
   - component: {fileID: 941408050}
   - component: {fileID: 1134889690}
+  - component: {fileID: 1690391815}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -45,7 +46,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -145,3 +146,72 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 32, y: 18}
   m_EdgeRadius: 0
+--- !u!114 &1690391815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907610840497991850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618c6d82498872b46a165edb1ca20624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: LevelMusic
+    clip: {fileID: 8300000, guid: 454bdc60a1b83c043a883cf2191a4d0e, type: 3}
+    volume: 1
+    pitch: 1
+    playOnAwake: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: RegEnemyDeath
+    clip: {fileID: 8300000, guid: 647bbda710c831143a83718fd2bbf49c, type: 3}
+    volume: 1
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerShoot
+    clip: {fileID: 8300000, guid: e6504a13d1ede5344bacf36514ff621d, type: 3}
+    volume: 0.4
+    pitch: 0.8
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PowerUp
+    clip: {fileID: 8300000, guid: 3da174c37559aa340b18c375a0284b1b, type: 3}
+    volume: 0.6
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: SpawnerDeath
+    clip: {fileID: 8300000, guid: 1ecd04c15717e314282bf193a68f6857, type: 3}
+    volume: 1
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHurt
+    clip: {fileID: 8300000, guid: 38eb3affe722af34c85bc2e5604fb7e1, type: 3}
+    volume: 0.6
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyShoot
+    clip: {fileID: 8300000, guid: 1a8eb685852ae9148a65a04f82ccf4e0, type: 3}
+    volume: 0.6
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: BossMusic
+    clip: {fileID: 8300000, guid: 642677679cf76244a8e9b94448dd011e, type: 3}
+    volume: 1
+    pitch: 1
+    playOnAwake: 0
+    loop: 1
+    source: {fileID: 0}
